@@ -1,0 +1,11 @@
+.table-attribute-thumbnails {
+  border: 0 !important;
+}
+
+.table-attribute-thumbnails thead {
+  background-color: #007cba;
+}
+
+.table-attribute-thumbnails thead tr th {
+  color: white;
+}

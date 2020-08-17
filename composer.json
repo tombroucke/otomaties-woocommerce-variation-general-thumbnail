@@ -1,0 +1,16 @@
+{
+  "name": "tombroucke/otomaties-woocommerce-variation-general-thumbnail",
+  "description": "",
+  "keywords": ["wordpress", "plugin", "woocommerce", "variation", "bulk", "attribute", "thumbnail"],
+  "homepage": "https://github.com/tombroucke/otomaties-woocommerce-variation-general-thumbnail",
+  "authors": [
+    {
+      "name": "Tom Broucke",
+      "homepage": "https://tombroucke.be"
+    }
+  ],
+  "type": "wordpress-plugin",
+  "require": {
+    "composer/installers": "^1.0"
+  }
+}
