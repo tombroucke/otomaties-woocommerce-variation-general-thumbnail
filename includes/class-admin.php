@@ -21,7 +21,7 @@ class Admin {
 	public function variation_images_tab( $tabs ) {
 
 		$tabs['variation_images'] = array(
-			'label'    => __( 'Variation images', 'woocommerce' ),
+			'label'    => __( 'Variation images', 'wc-variation-general-thumbnail' ),
 			'target'   => 'variation_images',
 			'class'    => array( 'show_if_variable' ),
 			'priority' => 65,

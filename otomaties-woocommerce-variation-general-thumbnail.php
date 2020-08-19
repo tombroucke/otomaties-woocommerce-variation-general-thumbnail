@@ -4,7 +4,7 @@
  * Description: Set a thumbnail for a variation attribute which will be shown for all variations with this attribute
  * Author: Tom Broucke
  * Author URI: https://tombroucke.be
- * Version: 1.0.1
+ * Version: 1.0.2
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wc-variation-general-thumbnail
@@ -83,9 +83,14 @@ class WC_Variation_General_Thumbnail {
 	 * @return void
 	 */
 	public function admin_enqueue_scripts() {
-		$version = '1.0.0';
+		$version = '1.0.2';
 		wp_enqueue_style( 'variation-general-thumbnail-css', plugins_url( 'css/wc-variation-general-thumbnail-admin.css', __FILE__ ), array(), $version );
 		wp_enqueue_script( 'variation-general-thumbnail-js', plugins_url( 'js/wc-variation-general-thumbnail-admin.js', __FILE__ ), array( 'jquery' ), $version );
+		wp_localize_script( 'variation-general-thumbnail-js', 'wc_variation_general_thumbnail_vars', array(
+			'upload_image' => __( 'Upload image', 'wc-variation-general-thumbnail' ),
+			'insert_image' => __( 'Insert image', 'wc-variation-general-thumbnail' ),
+			'use_image' => __( 'Use this image', 'wc-variation-general-thumbnail' ),
+		) );
 	}
 }
 

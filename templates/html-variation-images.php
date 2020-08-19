@@ -34,7 +34,7 @@ defined( 'ABSPATH' ) || exit;
 											if ( $thumbnail ) {
 												printf( '<a href="#" class="btn-media-upload">%s</a><br /><a href="#" class="btn-media-remove">%s</a>', $thumbnail, __( 'Remove image', 'wc-variation-general-thumbnail' ) );
 											} else {
-												printf( '<a href="#" class="btn-media-upload">Upload image</a><a href="#" class="btn-media-remove" style="display:none">%s</a>', __( 'Remove image', 'wc-variation-general-thumbnail' ) );
+												printf( '<a href="#" class="btn-media-upload">%s</a>', __( 'Upload image', 'wc-variation-general-thumbnail' ) );
 											}
 											?>
 											<input type="hidden" name="variation_images[<?php echo esc_html( $attribute_name ); ?>][<?php echo esc_html( $product_term ); ?>]" value="<?php echo esc_html( get_post_meta( $thepostid, 'variation_image_' . $attribute_name . '_' . $product_term, true ) ); ?>">

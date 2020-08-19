@@ -1,0 +1,6 @@
+*** WooCommerce common thumbnail for variation attribute ***
+
+= 1.0.2 =
+* Allow for translations
+* Added nl_NL
+* Show variation thumbnail in cart

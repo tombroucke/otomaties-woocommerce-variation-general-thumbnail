@@ -6,13 +6,13 @@ jQuery(document).ready(function($){
  
 		var button = $(this),
 		custom_uploader = wp.media({
-			title: 'Insert image',
+			title: wc_variation_general_thumbnail_vars.insert_image,
 			library : {
 				// uploadedTo : wp.media.view.settings.post.id, // attach to the current post?
 				type : 'image'
 			},
 			button: {
-				text: 'Use this image' // button label text
+				text: wc_variation_general_thumbnail_vars.use_image // button label text
 			},
 			multiple: false
 		}).on('select', function() { // it also has "open" and "close" events
@@ -32,6 +32,7 @@ jQuery(document).ready(function($){
 		var button = $(this);
 		button.parent().find('input').val('')
 		button.hide()
-		button.parent().find('.btn-media-upload').html('Upload image');
+		button.parent().find('.btn-media-upload').html(wc_variation_general_thumbnail_vars.upload_image);
 	});
+	console.log(wc_variation_general_thumbnail_vars.upload_image)
 });
