@@ -4,7 +4,7 @@
  * Description: Set a thumbnail for a variation attribute which will be shown for all variations with this attribute
  * Author: Tom Broucke
  * Author URI: https://tombroucke.be
- * Version: 1.0.2
+ * Version:           1.0.3
  * License: GPL2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: wc-variation-general-thumbnail
