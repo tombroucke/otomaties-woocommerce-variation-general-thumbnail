@@ -22,11 +22,12 @@ class Frontend {
 	public function custom_variation_image( $attr, $product, $variation ) {
 
 		// Get the variation image.
-		$default_image = get_post_meta( $variation->get_ID(), '_thumbnail_id', true );
+		
+		$default_image = get_post_meta($variation->get_id(), '_thumbnail_id', true );
 
 		// Only find the attribute image if no default image is set.
 		if ( ! $default_image ) {
-			$attribute_image = $this->find_image( $variation );
+			$attribute_image = $this->findImage( $variation );
 			if( $attribute_image ) {
 				$attr['image'] = wc_get_product_attachment_props( $attribute_image );
 			}
@@ -38,7 +39,7 @@ class Frontend {
 
 	public function custom_product_image($image, $product, $size, $attr, $placeholder) {
 		if ( $product->is_type( 'variation' ) ) {
-			$attribute_image = $this->find_image( $product );
+			$attribute_image = $this->findImage( $product );
 			if( $attribute_image ) {
 				return wp_get_attachment_image( $attribute_image, $size );
 			}
@@ -47,18 +48,31 @@ class Frontend {
 	}
 
 
-	public function find_image( $variation ) {
-		$image = false;
-		$product_id = $variation->get_parent_id();
-		$attributes = $variation->get_variation_attributes();
+	public function findImage( $variation ) {
 
+		$defaultLanguage = apply_filters('wpml_default_language', 'en');
+		$currentLanguage = apply_filters('wpml_current_language', 'en');
+
+		if ($defaultLanguage != $currentLanguage) {
+			do_action('wpml_switch_language', $defaultLanguage);
+			$variationId = apply_filters('wpml_object_id', $variation->get_id(), 'product_variation', true, $defaultLanguage);
+			$variation = wc_get_product($variationId);
+		}
+
+		$image = false;
+		$productId = apply_filters('wpml_object_id', $variation->get_parent_id(), 'product', true, $defaultLanguage);
+		$attributes = $variation->get_variation_attributes();
 		foreach ( $attributes as $attribute_name => $value ) {
 			$stripped_attribute = str_replace( 'attribute_', '', $attribute_name );
-			$attribute_image = get_post_meta( $product_id, 'variation_image_' . $stripped_attribute . '_' . $value, true );
+			$attribute_image = get_post_meta( $productId, 'variation_image_' . $stripped_attribute . '_' . $value, true );
 			if ( $attribute_image ) {
 				$image = $attribute_image;
 				break;
 			}
+		}
+
+		if ($defaultLanguage != $currentLanguage) {
+			do_action('wpml_switch_language', $currentLanguage);
 		}
 		
 		return $image;
